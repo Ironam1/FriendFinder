@@ -32,6 +32,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -335,10 +336,19 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block">
+        Submit
+      </button>
     </div>
-    
+    <a href="/api/friends">API Friends List</a> |
+    <a href="https://github.com/Ironam1/FriendFinder.git">GitHub Repo</a>
 
-    <script src="" async defer></script>
+    <script type="text/javascript">
+    let currentURL = window.location.origin;
+
+      $.ajax({ url: currentURL+ "/api/friends", method: "GET" }).done(function(data) {
+        console.log(data);
+      })
+    </script>
   </body>
 </html>
