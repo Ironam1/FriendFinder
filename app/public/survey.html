@@ -455,62 +455,43 @@
 
       $("#submit").on("click", function(evt) {
         evt.preventDefault();
-        let newFriend = 
-          {
-            name: $("#name")
-              .val()
-              .trim(),
-            photo: $("#photo")
-              .val()
-              .trim(),
-            scores: [
-              $("#dropdownMenu")
-                .val()
-                .trim(),
-              $("#dropdownMenu2")
-                .val()
-                .trim(),
-              $("#dropdownMenu3")
-                .val()
-                .trim(),
-              $("#dropdownMenu4")
-                .val()
-                .trim(),
-              $("#dropdownMenu5")
-                .val()
-                .trim(),
-              $("#dropdownMenu6")
-                .val()
-                .trim(),
-              $("#dropdownMenu7")
-                .val()
-                .trim(),
-              $("#dropdownMenu8")
-                .val()
-                .trim(),
-              $("#dropdownMenu9")
-                .val()
-                .trim(),
-              $("#dropdownMenu10")
-                .val()
-                .trim()
-            ]
-          };
+        console.log(evt);
+        let newFriend = {
+          name: $("#name")
+            .val()
+            .trim(),
+          photo: $("#photo")
+            .val()
+            .trim(),
+          scores: [
+            $("#dropdownMenu").val(),
+            $("#dropdownMenu2").val(),
+            $("#dropdownMenu3").val(),
+            $("#dropdownMenu4").val(),
+            $("#dropdownMenu5").val(),
+            $("#dropdownMenu6").val(),
+            $("#dropdownMenu7").val(),
+            $("#dropdownMenu8").val(),
+            $("#dropdownMenu9").val(),
+            $("#dropdownMenu10").val()
+          ]
+        };
+        console.log(newFriend);
 
         //   var newArr = parseInt(newFriend.scores);
         //   var sum = newArr.reduce(function(a, b){
         //     return a + b;
         //   }, 0);
         // console.log(sum);
-        
 
         $.ajax({ url: currentURL + "/api/friendsList", method: "GET" }).then(
           function(data) {
+            console.log(data);
+            console.log(newFriend);
             for (var i = 0; i < data.length; i++) {
               // var scoreArr = data[i].scores;
-              console.log(data[i].scores);
+              // console.log(data[i].scores);
             }
-            console.log(JSON.stringify(newFriend) + "#2");
             $.post("api/friendsList", newFriend, function(data) {
               if (data) {
                 console.log("sweet");
@@ -518,11 +499,12 @@
                 console.log("nope");
               }
             });
-          });
-          $("#myModal").modal();
+          }
+        );
+        // $("#myModal").modal();
       });
       // I have most functionality working. Except maybe the biggest part. I'm really stuck trying to figure out how
-      // to compare the arrays. 
+      // to compare the arrays.
     </script>
   </body>
 </html>
